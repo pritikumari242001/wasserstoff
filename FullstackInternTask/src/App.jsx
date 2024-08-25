@@ -5,17 +5,11 @@ import search from "./assets/icons/search.svg";
 import { BackgroundLayout, WeatherCard, MiniCard } from "./Components";
 
 function App() {
-    // State to hold user input for city name
-    const [input, setInput] = useState("");
-    // State to manage the temperature unit (Celsius or Fahrenheit)
-    const [unit, setUnit] = useState("C");
-    // State to store weather data for the current day
-    const [weather, setWeather] = useState({});
-    // State to store weather data for multiple days
-    const [values, setValues] = useState([]);
-    // State to manage the currently searched city/place
+     const [input, setInput] = useState("");
+     const [unit, setUnit] = useState("C");
+     const [weather, setWeather] = useState({});
+     const [values, setValues] = useState([]);
     const [place, setPlace] = useState("Delhi");
-    // State to store the location name returned by the API
     const [thisLocation, setLocation] = useState("");
 
     // Function to fetch weather data from the API
@@ -44,9 +38,9 @@ function App() {
 
             // Extracting the relevant weather data from the response
             const thisData = Object.values(response?.data?.locations)[0];
-            setLocation(thisData?.address); // Set the location name
-            setValues(thisData?.values); // Set the weather data for multiple days
-            setWeather(thisData?.values[0]); // Set the weather data for the current day
+            setLocation(thisData?.address); 
+            setValues(thisData?.values); 
+            setWeather(thisData?.values[0]); 
         } catch (e) {
             console.error(e);
             alert("This place does not exist"); // Error handling for invalid locations
@@ -136,16 +130,16 @@ function App() {
             <main className="w-full flex flex-wrap gap-8 py-4 px-[10%] items-center justify-center">
                 {/* Weather card displaying current weather details */}
                 <WeatherCard
-                    place={thisLocation} // Display location
-                    windspeed={weather.wspd} // Display wind speed
-                    windDirection={weather.wdir} // Display wind direction
-                    humidity={weather.humidity} // Display humidity
-                    temperature={convertTemperature(weather.temp)} // Display temperature with conversion
-                    iconString={weather.conditions} // Display weather icon
-                    conditions={weather.conditions} // Display weather conditions
-                    minTemperature={convertTemperature(weather.mint)} // Display min temperature
-                    maxTemperature={convertTemperature(weather.maxt)} // Display max temperature
-                    unit={unit} // Pass the current unit (C/F)
+                    place={thisLocation} 
+                    windspeed={weather.wspd} 
+                    windDirection={weather.wdir} 
+                    humidity={weather.humidity} 
+                    temperature={convertTemperature(weather.temp)} 
+                    iconString={weather.conditions} 
+                    conditions={weather.conditions} 
+                    minTemperature={convertTemperature(weather.mint)} 
+                    maxTemperature={convertTemperature(weather.maxt)} 
+                    unit={unit} 
                 />
 
                 {/* Mini cards displaying forecast for upcoming days */}
@@ -153,12 +147,12 @@ function App() {
                     {values?.slice(1, 6).map((curr) => {
                         return (
                             <MiniCard
-                                key={curr.datetime} // Unique key for each forecast day
-                                time={curr.datetime} // Display time
-                                temp={convertTemperature(curr.temp)} // Display temperature with conversion
-                                iconString={curr.conditions} // Display weather icon
-                                date={curr.datetimeStr} // Display date
-                                unit={unit} // Pass the current unit (C/F)
+                                key={curr.datetime} 
+                                time={curr.datetime} 
+                                temp={convertTemperature(curr.temp)} 
+                                iconString={curr.conditions} 
+                                date={curr.datetimeStr} 
+                                unit={unit} 
                             />
                         );
                     })}
