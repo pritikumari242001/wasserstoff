@@ -43,16 +43,16 @@ const degreesToCardinal = (degrees) => {
 
 // WeatherCard component displays detailed weather information
 const WeatherCard = ({
-    temperature, // Current temperature
-    windspeed, // Wind speed in km/h
-    windDirection, // Wind direction in degrees
-    humidity, // Humidity level
-    place, // Location name
-    iconString, // Weather condition string for icon selection
-    conditions, // Detailed weather conditions (e.g., "Sunny", "Cloudy")
-    minTemperature, // Minimum temperature for the day
-    maxTemperature, // Maximum temperature for the day
-    unit, // Temperature unit (e.g., "C" for Celsius)
+    temperature, 
+    windspeed, 
+    windDirection, 
+    humidity, 
+    place, 
+    iconString, 
+    conditions, 
+    minTemperature, 
+    maxTemperature, 
+    unit, 
 }) => {
     const [icon, setIcon] = useState(sun); // State to hold the current weather icon
     const { time } = useDate(); // Custom hook to get the current time
